@@ -1,0 +1,17 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: false
+        instance-id: ${spring.application.name}-01
+        service-name: ${spring.application.name}
+        port: ${server.port}
+        prefer-ip-address: true
+        ip-address: ${spring.cloud.client.ip-address}
