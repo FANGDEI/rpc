@@ -1,2 +1,2 @@
-# Consul
-A simple demo of Consul
+# RPC
+Some simple demo of rpc & gprc
