@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "./;user";
+
+package user;
+
+message Article {
+    int32 aid = 1;
+    string title = 2;
+    int32 views = 3;
+}
