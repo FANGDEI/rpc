@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "./;proto";
+
+package proto;
+
+// Greeter 微服务
+service Greeter {
+    // sends a greeting
+    rpc SayHello(HelloRequest) returns (HelloResponse) {}
+}
+
+// HellpRequest 请求数据格式
+message HelloRequest {
+    string name = 1;
+}
+
+// HelloResponse 响应数据格式
+message HelloResponse {
+    string message = 1;
+}
