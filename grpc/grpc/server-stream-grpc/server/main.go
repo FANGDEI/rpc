@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 const PORT = ":50051"
@@ -33,5 +34,6 @@ func main() {
 
 	s := grpc.NewServer()
 	proto.RegisterGreeterServer(s, &Server{})
+	reflection.Register(s)
 	s.Serve(listener)
 }
