@@ -14,9 +14,9 @@ const PORT = ":50051"
 type Server struct {
 }
 
-func (s *Server) PutStream(clientRequest proto.Greeter_PutStreamServer) error {
+func (s *Server) PutStream(putResponse proto.Greeter_PutStreamServer) error {
 	for i := 0; i < 10; i++ {
-		if item, err := clientRequest.Recv(); err != nil {
+		if item, err := putResponse.Recv(); err != nil {
 			log.Fatalln("break, err: ", err)
 		} else {
 			log.Println(item)
