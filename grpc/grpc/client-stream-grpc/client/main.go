@@ -3,6 +3,7 @@ package main
 import (
 	"client-stream-grpc/proto"
 	"context"
+	"fmt"
 	"log"
 	"time"
 
@@ -34,4 +35,7 @@ func main() {
 		})
 		time.Sleep(time.Second)
 	}
+	response, err := putRequest.CloseAndRecv()
+	CheckError(err)
+	fmt.Printf("response.Data: %v\n", response.Data)
 }

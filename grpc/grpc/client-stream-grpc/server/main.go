@@ -22,6 +22,7 @@ func (s *Server) PutStream(clientRequest proto.Greeter_PutStreamServer) error {
 			log.Println(item)
 		}
 	}
+	clientRequest.SendAndClose(&proto.StreamResponse{Data: "The message of server is done"})
 	return nil
 }
 
