@@ -15,12 +15,11 @@ const (
 )
 
 // 服务对象
-type server struct {
-	proto.UnimplementedGreeterServer
+type Server struct {
 }
 
 // SayHello 实现服务的接口 在 proto 中定义的所有服务都是接口
-func (s *server) SayHello(ctx context.Context, request *proto.HelloRequest) (*proto.HelloResponse, error) {
+func (s *Server) SayHello(ctx context.Context, request *proto.HelloRequest) (*proto.HelloResponse, error) {
 	return &proto.HelloResponse{Message: "hello " + request.Name}, nil
 }
 
@@ -32,7 +31,7 @@ func main() {
 
 	// 起一个服务
 	s := grpc.NewServer()
-	proto.RegisterGreeterServer(s, &server{})
+	proto.RegisterGreeterServer(s, &Server{})
 	// 注册反射服务 这个服务是CLI使用的 跟服务本身没有关系
 	reflection.Register(s)
 	if err := s.Serve(listener); err != nil {
